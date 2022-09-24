@@ -1,4 +1,3 @@
-from email import message
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
@@ -25,19 +24,19 @@ def loginPage(request):
         try:
             user = User.objects.get(username=username)
         except:
-            messages.error(request,"User Does not Exists !!")
+            messages.error(request , "User Does not Exists !!")
 
-        user = authenticate(request, username=username,password=password)
+        user = authenticate(request , username=username,password=password)
 
         if user is not None:
             login(request,user)
             return redirect('home')
         else:
-            messages.error(request,"username and password does not exisit !!!")
+            messages.error(request , "username and password does not exisit !!!")
 
+    context = {"page" : page}
 
-    context = {"page":page}
-    return render(request,'base/login_register.html',context)
+    return render(request ,'base/login_register.html', context)
 
 def registerUser(request):
       
@@ -49,13 +48,13 @@ def registerUser(request):
                 user = form.save(commit=False)
                 user.username = user.username.lower()
                 user.save()
-                login(request,user)
+                login(request , user)
                 return redirect('home')
             else:
-                messages.error(request,'An error occured during Registrations')
+                messages.error(request ,'An error occured during Registrations')
 
-        context={"form":form}
-        return render(request,'base/login_register.html',context)
+        context={"form" : form}
+        return render(request ,'base/login_register.html' , context)
 
 def logoutUser(request):
     logout(request)
@@ -72,14 +71,14 @@ def home(request):
     )
     room_count = rooms.count()
     topics = Topic.objects.all()
-    context = {'rooms':rooms,'topics':topics,"room_count":room_count}
-    return render(request, 'base/home.html',context)
+    context = {'rooms' : rooms , 'topics' : topics , "room_count" : room_count}
+    return render(request , 'base/home.html', context)
 
 
-def room(request,pk):
+def room(request , pk):
     room = Room.objects.get(id=pk)
-    context = {'room':room}
-    return render(request,'base/room.html',context)
+    context = {'room' : room}
+    return render(request , 'base/room.html' , context)
 
 @login_required(login_url="/login")
 def createRoom(request):
@@ -90,8 +89,8 @@ def createRoom(request):
             form.save()
             return redirect('home')
             
-    context = {'form':form}
-    return render(request,'base/room_form.html',context)
+    context = {'form' : form}
+    return render(request , 'base/room_form.html' , context)
 
 @login_required(login_url="/login")
 def updateRoom(request, pk):
@@ -106,8 +105,8 @@ def updateRoom(request, pk):
         if form.is_valid():
             form.save()
             return redirect('home')
-    context = {'form':form}
-    return render(request,'base/room_form.html',context)
+    context = {'form' : form}
+    return render(request , 'base/room_form.html' , context)
 
 @login_required(login_url="/login")
 def deleteRoom(request,pk):
