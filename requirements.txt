@@ -1,0 +1,12 @@
+asgiref==3.5.2
+certifi==2022.9.14
+distlib==0.3.4
+Django==4.1.1
+filelock==3.7.1
+pipenv==2022.9.8
+platformdirs==2.5.2
+six==1.16.0
+sqlparse==0.4.2
+tzdata==2022.2
+virtualenv==20.14.1
+virtualenv-clone==0.5.7
