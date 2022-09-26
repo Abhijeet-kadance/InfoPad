@@ -1,0 +1,33 @@
+{% extends 'main.html' %} {% block content %}
+
+<style>
+  .home-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+  }
+</style>
+
+{% comment %}
+<h1>Home Template</h1>
+{% endcomment %}
+
+<div class="home-container">
+  <!-- Topic Section Starts -->
+  <div>{% include 'base/topics_component.html' %}</div>
+  <!-- Topics Section Ends -->
+
+  <!-- Knowedge Feed Section Starts -->
+  <div>
+    <h5>{{room_count}} Rooms Available !</h5>
+    <a href="{% url 'create-room' %}">Create Room</a>
+    <hr />
+    {% include 'base/feed_component.html' %}
+  </div>
+  <!-- Knowledge Feed Section Ends -->
+
+  <!-- Activity Section Starts -->
+  <div>{% include 'base/activity_component.html' %}</div>
+  <!-- Activity Section Ends -->
+</div>
+
+{% endblock %}
