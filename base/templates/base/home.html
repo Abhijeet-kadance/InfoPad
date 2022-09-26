@@ -1,48 +1,33 @@
-{% extends 'main.html' %}
-
-{% block content %}
+{% extends 'main.html' %} {% block content %}
 
 <style>
-    .home-container{
-        display:grid;
-        grid-template-columns: 1fr 3fr;
-    }
+  .home-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+  }
 </style>
 
-{% comment %} <h1>Home Template </h1> {% endcomment %}
+{% comment %}
+<h1>Home Template</h1>
+{% endcomment %}
 
 <div class="home-container">
+  <!-- Topic Section Starts -->
+  <div>{% include 'base/topics_component.html' %}</div>
+  <!-- Topics Section Ends -->
 
-    <div>
-        <h3>Browse Topics</h3>
-        <hr/>
-        <div>
-            <a href="{% url 'home' %}">All</a>
-        </div>
-        {% for topic in topics %}
-            <div>
-                <a href = "{% url 'home' %}?q={{topic.name}}">{{topic.name}}</a>
-            </div>
-        {% endfor %}
-    </div>
+  <!-- Knowedge Feed Section Starts -->
+  <div>
+    <h5>{{room_count}} Rooms Available !</h5>
+    <a href="{% url 'create-room' %}">Create Room</a>
+    <hr />
+    {% include 'base/feed_component.html' %}
+  </div>
+  <!-- Knowledge Feed Section Ends -->
 
-    <div>
-        <h5>{{room_count}} Rooms Available !</h5>
-        <a href="{% url 'create-room' %}">Create Room</a>
-        <div>
-            {% for room in rooms %}
-            <div>
-                {% if request.user == room.host %}
-                <a href="{% url 'update-room' room.id %}">Edit</a>
-                <a href="{% url 'delete-room' room.id %}">Delete</a>
-                {% endif %}
-                <span>@{{room.host.username}}</span>
-                <p> {{room.id}} -- <a href="{%  url 'room' room.id %}">{{room.name}}</a></p>
-                <small>{{room.topic.name}}</small><br/><br/>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
+  <!-- Activity Section Starts -->
+  <div>{% include 'base/activity_component.html' %}</div>
+  <!-- Activity Section Ends -->
 </div>
 
 {% endblock %}
