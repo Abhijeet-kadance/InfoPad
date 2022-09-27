@@ -2,10 +2,15 @@
 <header class="header header--loggedIn">
   <div class="container">
     <a href="{% url 'home' %}" class="header__logo">
+<<<<<<< HEAD
       <img src="{% static 'images/logo.svg' %}" />
       <h1>
         InfoPad
       </h1>
+=======
+      <img src="{% static 'images/note.png' %}" />
+      <h1>InfoPad</h1>
+>>>>>>> d2064ca27a38d5a53119c0ed59d0d29856eb5772
     </a>
     <form class="header__search" method="GET" action={% url 'home' %}>
       <label>
@@ -47,7 +52,7 @@
       </a> 
       {% endif %}
       <div class="dropdown-menu">
-        <a href="settings.html" class="dropdown-link"
+        <a href="{% url 'update-user' %}" class="dropdown-link"
           ><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
             <title>tools</title>
             <path
