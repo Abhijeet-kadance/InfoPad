@@ -7,7 +7,7 @@
         <div class="room">
           <div class="room__top">
             <div class="room__topLeft">
-              <a href="index.html">
+              <a href="{% url 'home' %}">
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
                   <title>arrow-left</title>
                   <path
@@ -18,20 +18,9 @@
               <h3>Study Room</h3>
             </div>
 
-<<<<<<< HEAD
-<div class="comment-wrapper">
-    <h3>Conversations</h3>
-    <hr/>
-    {% for message in room_messages %}
-        <small>@{{message.user}} {{message.created|timesince}} ago</small>
-        <br/>
-        <p>{{message.body}}</p>
-    {% endfor %}
-</div>
-{% endblock %}
-=======
+            {% if room.host == request.user %}
             <div class="room__topRight">
-              <a href="#">
+              <a href="{% url 'update-room' room.id %}">
                 <svg
                   enable-background="new 0 0 24 24"
                   height="32"
@@ -57,7 +46,7 @@
                   </g>
                 </svg>
               </a>
-              <a href="#">
+              <a href="{% url 'delete-room' room.id %}">
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
                   <title>remove</title>
                   <path
@@ -66,7 +55,7 @@
                 </svg>
               </a>
             </div>
-
+            {% endif %}
             <!-- <button class="action-button" data-id="120" data-delete-url="https://randomuser.me/api/3324923"
             data-edit-url="profile.html">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
@@ -193,4 +182,3 @@
       <hr />
     </div>
     {% endfor %}
->>>>>>> e7489daedba1f0ab65e5f6023cd28be84be5a575

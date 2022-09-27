@@ -8,28 +8,6 @@
         
         <!-- Topics End -->
 
-<<<<<<< HEAD
-<style>
-    .home-container{
-        display:grid;
-        grid-template-columns: 1fr 3fr;
-    }
-</style>
-
-<h1>Home Template </h1>
-
-<div class="home-container">
-
-    <div>
-        <h3>Browse Topics</h3>
-        <hr/>
-        <div>
-            <a href="{% url 'home' %}">All</a>
-        </div>
-        {% for topic in topics %}
-            <div>
-                <a href = "{% url 'home' %}?q={{topic.name}}">{{topic.name}}</a>
-=======
         <!-- Room List Start -->
         <div class="roomList">
           <div class="mobile-menu">
@@ -47,7 +25,6 @@
             <div class="mobile-menuItems">
               <a class="btn btn--main btn--pill" href="#">Browse Topics</a>
               <a class="btn btn--main btn--pill" href="#">Recent Activities</a>
->>>>>>> e7489daedba1f0ab65e5f6023cd28be84be5a575
             </div>
           </div>
           <div class="roomList__header">

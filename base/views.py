@@ -86,10 +86,6 @@ def userProfile(request,pk):
 
 def room(request , pk):
     room = Room.objects.get(id=pk)
-<<<<<<< HEAD
-    room_messages = room.message_set.all().order_by('-created')
-    context = {'room' : room , 'room_messages' : room_messages}
-=======
     room_messages = room.message_set.all()
     participants = room.participants.all()
     if request.method == 'POST':
@@ -102,7 +98,6 @@ def room(request , pk):
         return redirect('room', pk=room.id)
 
     context = {'room' : room , 'room_messages':room_messages , 'participants':participants}
->>>>>>> e7489daedba1f0ab65e5f6023cd28be84be5a575
     return render(request , 'base/room.html' , context)
 
 @login_required(login_url="/login")
