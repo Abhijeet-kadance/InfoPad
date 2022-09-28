@@ -1,0 +1,13 @@
+version: '3.9'
+services:
+  base:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: infopad:v1
+    environment:
+      - PORT=8020
+    env_file:
+      - ./.env
+    ports:
+      - "8001:8020"

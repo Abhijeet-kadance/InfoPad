@@ -79,23 +79,16 @@ WSGI_APPLICATION = 'ideapad.wsgi.application'
 # }
 
 
-# DATABASES = {
-#     'default': {},
-#     'users_db':{
-#         'ENGINE':'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     },
-#     'base_db':{
-#         'ENGINE':'django.db.backends.postgresql_psycopg2',
-#         'NAME':os.environ.get("POSTGRES_DB"),
-#         'USER':os.environ.get("POSTGRES_USER"),
-#         'PASSWORD':os.environ.get("POSTGRES_PASSWORD"),
-#         'HOST':os.environ.get("POSTGRES_HOST"),
-#         'POST':''
-#     },
-
-    
-# }
+DATABASES = {
+    'default':{
+        'ENGINE':'django.db.backends.postgresql_psycopg2',
+        'NAME':os.environ.get("POSTGRES_DB"),
+        'USER':os.environ.get("POSTGRES_USER"),
+        'PASSWORD':os.environ.get("POSTGRES_PASSWORD"),
+        'HOST':os.environ.get("POSTGRES_HOST"),
+        'PORT':os.environ.get('POSTGRES_PORT')
+    },
+}
 
 
 DB_USERNAME=os.environ.get("POSTGRES_USER")
@@ -111,28 +104,28 @@ DB_IS_AVAIL = all ([
     DB_PORT
 ])
 
-POSTGRES_READY = str(os.environ.get('POSTGRES_READY')) == "1"
+# POSTGRES_READY = str(os.environ.get('POSTGRES_READY')) == "1"
 
-if DB_IS_AVAIL and POSTGRES_READY:
+# if DB_IS_AVAIL and POSTGRES_READY:
     
-    DATABASES = {
-    'default': {},
-    'users_db':{
-        'ENGINE':'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    },
-    'base_db':{
-        'ENGINE':'django.db.backends.postgresql_psycopg2',
-        'NAME':os.environ.get("POSTGRES_DB"),
-        'USER':os.environ.get("POSTGRES_USER"),
-        'PASSWORD':os.environ.get("POSTGRES_PASSWORD"),
-        'HOST':os.environ.get("POSTGRES_HOST"),
-        'PORT':DB_PORT
-    },
+#     DATABASES = {
+#     'default': {},
+#     'users_db':{
+#         'ENGINE':'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     },
+#     'base_db':{
+#         'ENGINE':'django.db.backends.postgresql_psycopg2',
+#         'NAME':os.environ.get("POSTGRES_DB"),
+#         'USER':os.environ.get("POSTGRES_USER"),
+#         'PASSWORD':os.environ.get("POSTGRES_PASSWORD"),
+#         'HOST':os.environ.get("POSTGRES_HOST"),
+#         'PORT':DB_PORT
+#     },
     
-}
+# }
 
-print(DATABASES)
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -178,4 +171,4 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-DATABASE_ROUTERS = ['routers.db_routers.AuthRouter','routers.db_routers.InfoRouter']
+# DATABASE_ROUTERS = ['routers.db_routers.AuthRouter']
