@@ -3,6 +3,7 @@ Django settings for ideapad project.
 
 """
 
+import os 
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -13,10 +14,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-m*m14%i+jex9pj1jmjp7e4px*#om9r3kn872b9-^e@j+cb37=4'
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = str(os.environ.get("DEBUG")) == '1'
 
 ALLOWED_HOSTS = []
 
@@ -76,7 +78,44 @@ WSGI_APPLICATION = 'ideapad.wsgi.application'
 #     }
 # }
 
-DATABASES = {
+
+# DATABASES = {
+#     'default': {},
+#     'users_db':{
+#         'ENGINE':'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     },
+#     'base_db':{
+#         'ENGINE':'django.db.backends.postgresql_psycopg2',
+#         'NAME':os.environ.get("POSTGRES_DB"),
+#         'USER':os.environ.get("POSTGRES_USER"),
+#         'PASSWORD':os.environ.get("POSTGRES_PASSWORD"),
+#         'HOST':os.environ.get("POSTGRES_HOST"),
+#         'POST':''
+#     },
+
+    
+# }
+
+
+DB_USERNAME=os.environ.get("POSTGRES_USER")
+DB_DATABASE=os.environ.get("POSTGRES_DB")
+DB_PASSWORD=os.environ.get("POSTGRES_PASSWORD")
+DB_HOST=os.environ.get("POSTGRES_HOST")
+DB_PORT = os.environ.get("POSTGRES_PORT")
+DB_IS_AVAIL = all ([
+    DB_USERNAME,
+    DB_DATABASE,
+    DB_PASSWORD,
+    DB_HOST,
+    DB_PORT
+])
+
+POSTGRES_READY = str(os.environ.get('POSTGRES_READY')) == "1"
+
+if DB_IS_AVAIL and POSTGRES_READY:
+    
+    DATABASES = {
     'default': {},
     'users_db':{
         'ENGINE':'django.db.backends.sqlite3',
@@ -84,14 +123,16 @@ DATABASES = {
     },
     'base_db':{
         'ENGINE':'django.db.backends.postgresql_psycopg2',
-        'NAME':'infopad',
-        'USER':'postgres',
-        'PASSWORD':'r00t',
-        'HOST':'localhost',
-        'POST':''
+        'NAME':os.environ.get("POSTGRES_DB"),
+        'USER':os.environ.get("POSTGRES_USER"),
+        'PASSWORD':os.environ.get("POSTGRES_PASSWORD"),
+        'HOST':os.environ.get("POSTGRES_HOST"),
+        'PORT':DB_PORT
     },
     
 }
+
+print(DATABASES)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

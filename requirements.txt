@@ -6,8 +6,12 @@ django-dotenv==1.4.2
 filelock==3.7.1
 pipenv==2022.9.8
 platformdirs==2.5.2
+psycopg2==2.9.3
+python-dotenv==0.21.0
 six==1.16.0
 sqlparse==0.4.2
 tzdata==2022.2
 virtualenv==20.14.1
 virtualenv-clone==0.5.7
+psycopg2-binary
+gunicorn
