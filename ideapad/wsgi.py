@@ -17,12 +17,8 @@ CURRENT_DIR = pathlib.Path(__file__).resolve().parent
 BASE_DIR = CURRENT_DIR.parent
 ENV_FILE_PATH = BASE_DIR / ".env"
 
-<<<<<<< HEAD
-dotenv.read_dotenv(str(ENV_FILE_PATH))
-=======
 dotenv.load_dotenv(str(ENV_FILE_PATH))
 
->>>>>>> efdeb17f103fc7796aef297a12cf4ed19b56d652
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ideapad.settings')
 
 application = get_wsgi_application()
