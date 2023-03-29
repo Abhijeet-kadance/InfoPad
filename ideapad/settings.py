@@ -15,12 +15,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
+# SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
+SECRET_KEY ='django-insecure-!0^0a$zg4w$t4vog_%0_9+t&i#hg^%tbd1c-2$8p!jia4a4!d='
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = str(os.environ.get("DEBUG")) == '1'
-
+#DEBUG = str(os.environ.get("DEBUG")) == '1'
+DEBUG = True
 ALLOWED_HOSTS = []
 
 
@@ -72,38 +73,38 @@ WSGI_APPLICATION = 'ideapad.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-
 DATABASES = {
-    'default':{
-        'ENGINE':'django.db.backends.postgresql_psycopg2',
-        'NAME':os.environ.get("POSTGRES_DB"),
-        'USER':os.environ.get("POSTGRES_USER"),
-        'PASSWORD':os.environ.get("POSTGRES_PASSWORD"),
-        'HOST':os.environ.get("POSTGRES_HOST"),
-        'PORT':os.environ.get('POSTGRES_PORT')
-    },
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 
-DB_USERNAME=os.environ.get("POSTGRES_USER")
-DB_DATABASE=os.environ.get("POSTGRES_DB")
-DB_PASSWORD=os.environ.get("POSTGRES_PASSWORD")
-DB_HOST=os.environ.get("POSTGRES_HOST")
-DB_PORT = os.environ.get("POSTGRES_PORT")
-DB_IS_AVAIL = all ([
-    DB_USERNAME,
-    DB_DATABASE,
-    DB_PASSWORD,
-    DB_HOST,
-    DB_PORT
-])
+# DATABASES = {
+#     'default':{
+#         'ENGINE':'django.db.backends.postgresql_psycopg2',
+#         'NAME':os.environ.get("POSTGRES_DB"),
+#         'USER':os.environ.get("POSTGRES_USER"),
+#         'PASSWORD':os.environ.get("POSTGRES_PASSWORD"),
+#         'HOST':os.environ.get("POSTGRES_HOST"),
+#         'PORT':os.environ.get('POSTGRES_PORT')
+#     },
+# }
+
+
+# DB_USERNAME=os.environ.get("POSTGRES_USER")
+# DB_DATABASE=os.environ.get("POSTGRES_DB")
+# DB_PASSWORD=os.environ.get("POSTGRES_PASSWORD")
+# DB_HOST=os.environ.get("POSTGRES_HOST")
+# DB_PORT = os.environ.get("POSTGRES_PORT")
+# DB_IS_AVAIL = all ([
+#     DB_USERNAME,
+#     DB_DATABASE,
+#     DB_PASSWORD,
+#     DB_HOST,
+#     DB_PORT
+# ])
 
 # POSTGRES_READY = str(os.environ.get('POSTGRES_READY')) == "1"
 

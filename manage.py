@@ -19,9 +19,5 @@ def main():
 
 
 if __name__ == '__main__':
-<<<<<<< HEAD
-    dotenv.read_dotenv()
-=======
     dotenv.load_dotenv()
->>>>>>> efdeb17f103fc7796aef297a12cf4ed19b56d652
     main()

@@ -7,7 +7,7 @@ services:
     image: infopad:v1
     environment:
       - PORT=8020
-    env_file:
-      - ./.env
+    # env_file:
+    #   - ./.env
     ports:
-      - "8001:8020"
+      - "8007:8007"
