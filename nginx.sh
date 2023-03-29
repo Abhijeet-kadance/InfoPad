@@ -2,7 +2,7 @@
  
 echo "NGINX SETUP: INITIALIZED...."
 
-sudo cp -rf  ideapad.conf /etc/nginx/conf.d
+sudo cp -rf  app.conf /etc/nginx/conf.d
 
 chmod 710 /var/lib/jenkins/workspace/django-cicd
 
