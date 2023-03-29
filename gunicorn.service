@@ -1,0 +1,17 @@
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=pshweta
+Group=www-data
+WorkingDirectory=/var/lib/jenkins/workspace/django-cicd
+ExecStart=/var/lib/jenkins/workspace/django-cicd/venv/bin/gunicorn \
+         --error-logfile /var/lib/jenkins/workspace/django-cicd/error.log \
+         --workers 3 \
+         --bind unix:/run/gunicorn.sock \
+         --capture-output --log-level debug \
+         ideapad.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
