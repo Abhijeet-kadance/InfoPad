@@ -1,5 +1,5 @@
 ## CI-CD for Staging to Production Using Jenkins
----
+
 
 ### In this PipeLine we are going to  use NGINX as a Web/Proxy Server , Gunicorn as a Application Server and Jenkins as Pipeline Management.
 ---
@@ -86,7 +86,7 @@ To Deactivate a virtual enviornment you can use the command :
 
     deactivate
 
-***Note : Keep in mind that deactive will only work if you are already inside a virutalenv***
+>***Note : Keep in mind that deactive will only work if you are already inside a virutalenv***
 
 ***Creating a requirement.txt file***
 
@@ -98,7 +98,7 @@ To create one simply use
     # for python2
     pip freeze > requirements.txt
 
-***Note: Its a better pratice to use python3 for dveleopment***
+>***Note: Its a better pratice to use python3 for dveleopment***
 
 ---
 
